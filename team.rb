@@ -10,15 +10,27 @@ class Team
     @agile_method=agile_method
   end
 
+=begin
+    I want an anwer to this question from the team (more likely the PO) now
+    ( A look in the backlog is allowed). I know it will be an stimate but I don't
+  want to wait several hours or even days to get the "most accurate" answer.
+=end
   def when_is_task_finished
     Date.today+30
 
   end
 
+=begin
+I want an answer to this question immediately (Again, a glimpse in the backlog is ok).
+I don't want to paralyse the team with a several hours meeting.
+It is ok if someone tells me how to calculate it myself. "During the last weeks we accomplished 3 Backlog items per week on average."
+With this answer and the transparent Baklog (and it should be transparent) I can calculate it myself.
+=end
   def what_will_be_done_until
     %w{TP-123 TP-456}
   end
 
+  # Only if you have the same problem like we have that a team is responsible for more than one product
   def for_which_products_are_you_responsible
     productslist = []
     @products.each do |product|
@@ -33,6 +45,7 @@ class Team
     end
   end
 
+  #When is the best time to get in contact with the team?
   def when_do_you_meet_for_standup
     Standup.new(10, 15, Standup::DAYS_IN_WEEK[0])
   end
@@ -41,16 +54,23 @@ class Team
     %w{Alexander\ Fürstenau Björn\ Schulz Larry\ Page Agata\ Catania Petra \Reski }
   end
 
+
+  # Who is the right person of the team to talk to if I don't have a concrete contact person?
   def whom_should_i_talk_to
     :anybody
   end
 
-  def sprint_goal_accomplished
-    @agile_method.sprint_goal_accomplished if @agile_method.respond_to?(:sprint_goal_accomplished)
-  end
 
+  # Is this relevant for someone outside the team or should these informations for someone outside the team?
   def what_are_your_values
     %w{Respect Communication Feedback Courage}
+  end
+
+  private
+
+# This information is important for the team but not for someone outside the team!
+  def sprint_goal_accomplished
+    @agile_method.sprint_goal_accomplished if @agile_method.respond_to?(:sprint_goal_accomplished)
   end
 
 end

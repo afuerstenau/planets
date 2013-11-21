@@ -29,7 +29,7 @@ class TeamTest < Test::Unit::TestCase
     assert_equal 'Black Team', team.name
   end
 
-  def test_when_finished
+def test_when_finished
     team = Team.new('Black Team')
     assert_equal(Date.today + 30, team.when_is_task_finished)
   end
@@ -70,12 +70,6 @@ class TeamTest < Test::Unit::TestCase
   def test_the_person_to_talk_to
     team = Team.new('Black Team')
     assert_equal(:anybody, team.whom_should_i_talk_to)
-  end
-
-  def test_sprint_goal_accomplished
-    team = Team.new('Black Team')
-    assert_equal(nil, team.sprint_goal_accomplished)
-
   end
 
   def test_what_are_your_values
